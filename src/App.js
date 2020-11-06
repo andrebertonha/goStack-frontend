@@ -13,8 +13,19 @@ import Header from './components/Header';
 function App() {
     return (
         <>
-            <Header title="Testando" />;
-            <Header title="Desestruturação" />;
+            <Header title="Testando">
+                <ul>
+                    <li>Homepage</li>
+                    <li>Projects</li>
+                </ul>
+            </Header>;
+            <Header title="Desestruturação">
+                <ul>
+                    <li>Homepage</li>
+                    <li>Projects</li>
+                    <li>Login</li>
+                </ul>
+            </Header>;
         </>        
     );    
 }
