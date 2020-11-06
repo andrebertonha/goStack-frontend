@@ -6,27 +6,21 @@ import Header from './components/Header';
  *** Conceitos React
  - Componente
  - Propriedade
- - Estado
+ - Estado e Imutabilidade
 
  */
 
 function App() {
+    const projetos = ['Desenvolvimento de App', 'Front end web']
+
     return (
         <>
-            <Header title="Testando">
-                <ul>
-                    <li>Homepage</li>
-                    <li>Projects</li>
-                </ul>
-            </Header>;
-            <Header title="Desestruturação">
-                <ul>
-                    <li>Homepage</li>
-                    <li>Projects</li>
-                    <li>Login</li>
-                </ul>
-            </Header>;
-        </>        
+            <Header title="Projects" />
+
+            <ul>
+                {projetos.map(p => <li key={p}>{p}</li>)}
+            </ul>
+        </>
     );    
 }
 
