@@ -5,4 +5,7 @@
 ### do yarn install or simple yarn to install libraries
 
 + To run the project:
-    => yarn babel src/index.js --out-file public/bundle.js
+    - on root folder:
+    \> yarn webpack-dev-server --mode development
+    
+
