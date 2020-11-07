@@ -6,6 +6,6 @@
 
 + To run the project:
     - on root folder:
-    \> yarn webpack-dev-server --mode development
+    \> yarn dev
     
 
