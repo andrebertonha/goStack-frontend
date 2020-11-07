@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import api from './services/api';
 
 import './App.css';
-import backgroundImg from './assets/background.jpg';
 
 import Header from './components/Header';
 
@@ -10,14 +10,21 @@ import Header from './components/Header';
  - Componente
  - Propriedade
  - Estado e Imutabilidade
+ - useEffect disparar funcoes assim que o componente for exibido em tela
  */
 
 function App() {
-    const [projetos, setProjetos] = useState(['Desenvolvimento de App', 'Front end web']);
+    const [projetos, setProjetos] = useState([]);
 
     // useState retorna um array com 2 posicoes
     // variavel de projetos com seu valor inicial
     // segundo param eh uma funcao para atualizar o valor
+
+    useEffect(() => {
+        api.get('/projects').then(response => {
+            setProjetos(response.data);
+        });
+    }, []);
 
     function handleAddProject() {
         setProjetos([...projetos, `Novo projeto ${Date.now()}`]);
@@ -26,10 +33,8 @@ function App() {
     return (
         <>
             <Header title="Projects" />
-
-            <img width={300} src={backgroundImg} />
             <ul>
-                {projetos.map(p => <li key={p}>{p}</li>)}
+                {projetos.map(p => <li key={p.id}>{p.title}</li>)}
             </ul>
             <button type="button" onClick={handleAddProject}>AdicionarProjeto</button>
         </>
