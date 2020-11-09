@@ -21,24 +21,24 @@ function App() {
     // segundo param eh uma funcao para atualizar o valor
 
     useEffect(() => {
-        api.get('/projects').then(response => {
+        api.get('/projects').then(response => {            
             setProjetos(response.data);
         });
     }, []);
 
-    function handleAddProject() {
-        setProjetos([...projetos, `Novo projeto ${Date.now()}`]);
+    async function handleAddProject() {
+        //setProjetos([...projetos, `Novo projeto ${Date.now()}`]);
+        api.post('projects', {
+            title: `Novo projeto ${Date.now()}`,
+            owner: 'andre martins'
+        })
     }
 
     return (
         <>        
             <Header title="Projects" />
             <ul>
-                {
-                    projetos.map(p => {                            
-                            <li key={p.id}>{p.title}</li>
-                        })
-                }
+                {projetos.map(project => <li key={project.id}>{project.title}</li>)}
             </ul>
             <button type="button" onClick={handleAddProject}>AdicionarProjeto</button>
         </>
